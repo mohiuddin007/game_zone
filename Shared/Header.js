@@ -1,20 +1,21 @@
 import React from 'react';
 import {MaterialIcons} from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 export default function Header({navigation}){
     const openMenu = () => {
         navigation.openDrawer();
     }
     return(
-        <View style={styles.header}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={styles.header}>
             <MaterialIcons name="menu" size={28} onPress={openMenu} style={styles.icon}/>
-            <View>
+            <View style={styles.headerTitle}>
+                <Image source={require('../assets/rating-1.png')} style={styles.headerImage}/>
                 <Text style={styles.headerText}>
                       GameZone
                 </Text>
             </View>
-        </View>
+        </ImageBackground>
     )
 }
 const styles = StyleSheet.create({
@@ -34,5 +35,13 @@ const styles = StyleSheet.create({
     icon: {
         position: 'absolute',
         left: 10
+    },
+    headerImage:{
+        width: 26,
+        height: 26,
+        marginHorizontal: 10
+    },
+    headerTitle:{
+        flexDirection: 'row',
     }
 })
